@@ -1,0 +1,670 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProductionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Activity">
+    <Key>
+      <PropertyRef Name="ActivityId" />
+    </Key>
+    <Property Name="ProcessId" Type="int" Nullable="false" />
+    <Property Name="ActivityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActivityName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NextActivity" Type="int" />
+    <Property Name="ActivityOrder" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Manufacturer">
+    <Key>
+      <PropertyRef Name="ManufacturerId" />
+    </Key>
+    <Property Name="ManufacturerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ManufacturerName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ManufacturerDescription" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="OrderDescription" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderActivity">
+    <Key>
+      <PropertyRef Name="OrderActivityId" />
+    </Key>
+    <Property Name="OrderActivityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderId" Type="int" Nullable="false" />
+    <Property Name="ActivityId" Type="int" Nullable="false" />
+    <Property Name="ManufacturerId" Type="int" Nullable="false" />
+    <Property Name="NextOrderActivityId" Type="int" />
+    <Property Name="Comments" Type="varchar(max)" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PRODUCTION.dbo.OrderInput' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="OrderInput">
+    <Key>
+      <PropertyRef Name="OrderActivityInput" />
+      <PropertyRef Name="OrderActivityId" />
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="UoMId" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="CreatedOn" />
+      <PropertyRef Name="UpdatedBy" />
+      <PropertyRef Name="UpdatedOn" />
+    </Key>
+    <Property Name="OrderActivityInput" Type="int" Nullable="false" />
+    <Property Name="OrderActivityId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="SizeId" Type="int" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+    <Property Name="UoMId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PRODUCTION.dbo.OrderOutput' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="OrderOutput">
+    <Key>
+      <PropertyRef Name="OrderActivityInput" />
+      <PropertyRef Name="OrderActivityId" />
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="UoMId" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="CreatedOn" />
+      <PropertyRef Name="UpdatedBy" />
+      <PropertyRef Name="UpdatedOn" />
+    </Key>
+    <Property Name="OrderActivityInput" Type="int" Nullable="false" />
+    <Property Name="OrderActivityId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="SizeId" Type="int" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+    <Property Name="UoMId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Process">
+    <Key>
+      <PropertyRef Name="ProcessId" />
+    </Key>
+    <Property Name="ProcessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProcessName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProcessDescription" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductDescription" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="ProducyIsActive" Type="bit" Nullable="false" />
+    <Property Name="Color" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsInput" Type="bit" Nullable="false" />
+    <Property Name="IsFinished" Type="bit" Nullable="false" />
+    <Property Name="Vendor" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PRODUCTION.dbo.ProductSize' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ProductSize">
+    <Key>
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="SizeId" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="CreatedOn" />
+      <PropertyRef Name="UpdatedBy" />
+      <PropertyRef Name="UpdatedOn" />
+    </Key>
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="SizeId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PRODUCTION.dbo.ProductStore' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ProductStore">
+    <Key>
+      <PropertyRef Name="StoreId" />
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="CreatedOn" />
+      <PropertyRef Name="UpdatedBy" />
+      <PropertyRef Name="UpdatedOn" />
+    </Key>
+    <Property Name="StoreId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PRODUCTION.dbo.ProductUoM' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ProductUoM">
+    <Key>
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="UoMId" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="CreatedOn" />
+      <PropertyRef Name="UpdatedBy" />
+      <PropertyRef Name="UpdatedOn" />
+    </Key>
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="UoMId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Size">
+    <Key>
+      <PropertyRef Name="SizeId" />
+    </Key>
+    <Property Name="SizeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SizeName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Grouper" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Store">
+    <Key>
+      <PropertyRef Name="StoreId" />
+    </Key>
+    <Property Name="StoreId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StoreName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UnitOfMeasure">
+    <Key>
+      <PropertyRef Name="UoMId" />
+    </Key>
+    <Property Name="UoMId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UoMName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PRODUCTION.dbo.UserRole' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Activity_Process">
+    <End Role="Process" Type="Self.Process" Multiplicity="1" />
+    <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Process">
+        <PropertyRef Name="ProcessId" />
+      </Principal>
+      <Dependent Role="Activity">
+        <PropertyRef Name="ProcessId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderActivity_Activity">
+    <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+    <End Role="OrderActivity" Type="Self.OrderActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="ActivityId" />
+      </Principal>
+      <Dependent Role="OrderActivity">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderActivity_Manufacturer">
+    <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
+    <End Role="OrderActivity" Type="Self.OrderActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="ManufacturerId" />
+      </Principal>
+      <Dependent Role="OrderActivity">
+        <PropertyRef Name="ManufacturerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderActivity_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderActivity" Type="Self.OrderActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="OrderActivity">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderInput_OrderActivity">
+    <End Role="OrderActivity" Type="Self.OrderActivity" Multiplicity="1" />
+    <End Role="OrderInput" Type="Self.OrderInput" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderActivity">
+        <PropertyRef Name="OrderActivityId" />
+      </Principal>
+      <Dependent Role="OrderInput">
+        <PropertyRef Name="OrderActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderInput_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="OrderInput" Type="Self.OrderInput" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="OrderInput">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderInput_Size">
+    <End Role="Size" Type="Self.Size" Multiplicity="0..1" />
+    <End Role="OrderInput" Type="Self.OrderInput" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Size">
+        <PropertyRef Name="SizeId" />
+      </Principal>
+      <Dependent Role="OrderInput">
+        <PropertyRef Name="SizeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderInput_UnitOfMeasure">
+    <End Role="UnitOfMeasure" Type="Self.UnitOfMeasure" Multiplicity="1" />
+    <End Role="OrderInput" Type="Self.OrderInput" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UnitOfMeasure">
+        <PropertyRef Name="UoMId" />
+      </Principal>
+      <Dependent Role="OrderInput">
+        <PropertyRef Name="UoMId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderInput_UnitOfMeasure1">
+    <End Role="UnitOfMeasure" Type="Self.UnitOfMeasure" Multiplicity="1" />
+    <End Role="OrderInput" Type="Self.OrderInput" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UnitOfMeasure">
+        <PropertyRef Name="UoMId" />
+      </Principal>
+      <Dependent Role="OrderInput">
+        <PropertyRef Name="UoMId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderOutput_OrderActivity">
+    <End Role="OrderActivity" Type="Self.OrderActivity" Multiplicity="1" />
+    <End Role="OrderOutput" Type="Self.OrderOutput" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderActivity">
+        <PropertyRef Name="OrderActivityId" />
+      </Principal>
+      <Dependent Role="OrderOutput">
+        <PropertyRef Name="OrderActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderOutput_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="OrderOutput" Type="Self.OrderOutput" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="OrderOutput">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderOutput_Size">
+    <End Role="Size" Type="Self.Size" Multiplicity="0..1" />
+    <End Role="OrderOutput" Type="Self.OrderOutput" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Size">
+        <PropertyRef Name="SizeId" />
+      </Principal>
+      <Dependent Role="OrderOutput">
+        <PropertyRef Name="SizeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderOutput_UnitOfMeasure">
+    <End Role="UnitOfMeasure" Type="Self.UnitOfMeasure" Multiplicity="1" />
+    <End Role="OrderOutput" Type="Self.OrderOutput" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UnitOfMeasure">
+        <PropertyRef Name="UoMId" />
+      </Principal>
+      <Dependent Role="OrderOutput">
+        <PropertyRef Name="UoMId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductSize_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductSize" Type="Self.ProductSize" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="ProductSize">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductSize_Size">
+    <End Role="Size" Type="Self.Size" Multiplicity="1" />
+    <End Role="ProductSize" Type="Self.ProductSize" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Size">
+        <PropertyRef Name="SizeId" />
+      </Principal>
+      <Dependent Role="ProductSize">
+        <PropertyRef Name="SizeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductStore_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductStore" Type="Self.ProductStore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="ProductStore">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductStore_Store">
+    <End Role="Store" Type="Self.Store" Multiplicity="1" />
+    <End Role="ProductStore" Type="Self.ProductStore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="StoreId" />
+      </Principal>
+      <Dependent Role="ProductStore">
+        <PropertyRef Name="StoreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductUoM_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductUoM" Type="Self.ProductUoM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="ProductUoM">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductUoM_UnitOfMeasure">
+    <End Role="UnitOfMeasure" Type="Self.UnitOfMeasure" Multiplicity="1" />
+    <End Role="ProductUoM" Type="Self.ProductUoM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UnitOfMeasure">
+        <PropertyRef Name="UoMId" />
+      </Principal>
+      <Dependent Role="ProductUoM">
+        <PropertyRef Name="UoMId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRole_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRole_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProductionModelStoreContainer">
+    <EntitySet Name="Activity" EntityType="Self.Activity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderActivity" EntityType="Self.OrderActivity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Process" EntityType="Self.Process" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Size" EntityType="Self.Size" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UnitOfMeasure" EntityType="Self.UnitOfMeasure" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderInput" EntityType="Self.OrderInput" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[OrderInput].[OrderActivityInput] AS [OrderActivityInput], 
+[OrderInput].[OrderActivityId] AS [OrderActivityId], 
+[OrderInput].[ProductId] AS [ProductId], 
+[OrderInput].[SizeId] AS [SizeId], 
+[OrderInput].[Quantity] AS [Quantity], 
+[OrderInput].[UoMId] AS [UoMId], 
+[OrderInput].[CreatedBy] AS [CreatedBy], 
+[OrderInput].[CreatedOn] AS [CreatedOn], 
+[OrderInput].[UpdatedBy] AS [UpdatedBy], 
+[OrderInput].[UpdatedOn] AS [UpdatedOn]
+FROM [dbo].[OrderInput] AS [OrderInput]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="OrderOutput" EntityType="Self.OrderOutput" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[OrderOutput].[OrderActivityInput] AS [OrderActivityInput], 
+[OrderOutput].[OrderActivityId] AS [OrderActivityId], 
+[OrderOutput].[ProductId] AS [ProductId], 
+[OrderOutput].[SizeId] AS [SizeId], 
+[OrderOutput].[Quantity] AS [Quantity], 
+[OrderOutput].[UoMId] AS [UoMId], 
+[OrderOutput].[CreatedBy] AS [CreatedBy], 
+[OrderOutput].[CreatedOn] AS [CreatedOn], 
+[OrderOutput].[UpdatedBy] AS [UpdatedBy], 
+[OrderOutput].[UpdatedOn] AS [UpdatedOn]
+FROM [dbo].[OrderOutput] AS [OrderOutput]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ProductSize" EntityType="Self.ProductSize" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[ProductSize].[ProductId] AS [ProductId], 
+[ProductSize].[SizeId] AS [SizeId], 
+[ProductSize].[CreatedBy] AS [CreatedBy], 
+[ProductSize].[CreatedOn] AS [CreatedOn], 
+[ProductSize].[UpdatedBy] AS [UpdatedBy], 
+[ProductSize].[UpdatedOn] AS [UpdatedOn]
+FROM [dbo].[ProductSize] AS [ProductSize]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ProductStore" EntityType="Self.ProductStore" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[ProductStore].[StoreId] AS [StoreId], 
+[ProductStore].[ProductId] AS [ProductId], 
+[ProductStore].[CreatedBy] AS [CreatedBy], 
+[ProductStore].[CreatedOn] AS [CreatedOn], 
+[ProductStore].[UpdatedBy] AS [UpdatedBy], 
+[ProductStore].[UpdatedOn] AS [UpdatedOn]
+FROM [dbo].[ProductStore] AS [ProductStore]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ProductUoM" EntityType="Self.ProductUoM" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[ProductUoM].[ProductId] AS [ProductId], 
+[ProductUoM].[UoMId] AS [UoMId], 
+[ProductUoM].[CreatedBy] AS [CreatedBy], 
+[ProductUoM].[CreatedOn] AS [CreatedOn], 
+[ProductUoM].[UpdatedBy] AS [UpdatedBy], 
+[ProductUoM].[UpdatedOn] AS [UpdatedOn]
+FROM [dbo].[ProductUoM] AS [ProductUoM]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="UserRole" EntityType="Self.UserRole" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[UserRole].[UserId] AS [UserId], 
+[UserRole].[RoleId] AS [RoleId]
+FROM [dbo].[UserRole] AS [UserRole]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Activity_Process" Association="Self.FK_Activity_Process">
+      <End Role="Process" EntitySet="Process" />
+      <End Role="Activity" EntitySet="Activity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderActivity_Activity" Association="Self.FK_OrderActivity_Activity">
+      <End Role="Activity" EntitySet="Activity" />
+      <End Role="OrderActivity" EntitySet="OrderActivity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderActivity_Manufacturer" Association="Self.FK_OrderActivity_Manufacturer">
+      <End Role="Manufacturer" EntitySet="Manufacturer" />
+      <End Role="OrderActivity" EntitySet="OrderActivity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderActivity_Order" Association="Self.FK_OrderActivity_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderActivity" EntitySet="OrderActivity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderInput_OrderActivity" Association="Self.FK_OrderInput_OrderActivity">
+      <End Role="OrderActivity" EntitySet="OrderActivity" />
+      <End Role="OrderInput" EntitySet="OrderInput" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderInput_Product" Association="Self.FK_OrderInput_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="OrderInput" EntitySet="OrderInput" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderInput_Size" Association="Self.FK_OrderInput_Size">
+      <End Role="Size" EntitySet="Size" />
+      <End Role="OrderInput" EntitySet="OrderInput" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderInput_UnitOfMeasure" Association="Self.FK_OrderInput_UnitOfMeasure">
+      <End Role="UnitOfMeasure" EntitySet="UnitOfMeasure" />
+      <End Role="OrderInput" EntitySet="OrderInput" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderInput_UnitOfMeasure1" Association="Self.FK_OrderInput_UnitOfMeasure1">
+      <End Role="UnitOfMeasure" EntitySet="UnitOfMeasure" />
+      <End Role="OrderInput" EntitySet="OrderInput" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderOutput_OrderActivity" Association="Self.FK_OrderOutput_OrderActivity">
+      <End Role="OrderActivity" EntitySet="OrderActivity" />
+      <End Role="OrderOutput" EntitySet="OrderOutput" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderOutput_Product" Association="Self.FK_OrderOutput_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="OrderOutput" EntitySet="OrderOutput" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderOutput_Size" Association="Self.FK_OrderOutput_Size">
+      <End Role="Size" EntitySet="Size" />
+      <End Role="OrderOutput" EntitySet="OrderOutput" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderOutput_UnitOfMeasure" Association="Self.FK_OrderOutput_UnitOfMeasure">
+      <End Role="UnitOfMeasure" EntitySet="UnitOfMeasure" />
+      <End Role="OrderOutput" EntitySet="OrderOutput" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductSize_Product" Association="Self.FK_ProductSize_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductSize" EntitySet="ProductSize" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductSize_Size" Association="Self.FK_ProductSize_Size">
+      <End Role="Size" EntitySet="Size" />
+      <End Role="ProductSize" EntitySet="ProductSize" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductStore_Product" Association="Self.FK_ProductStore_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductStore" EntitySet="ProductStore" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductStore_Store" Association="Self.FK_ProductStore_Store">
+      <End Role="Store" EntitySet="Store" />
+      <End Role="ProductStore" EntitySet="ProductStore" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductUoM_Product" Association="Self.FK_ProductUoM_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductUoM" EntitySet="ProductUoM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductUoM_UnitOfMeasure" Association="Self.FK_ProductUoM_UnitOfMeasure">
+      <End Role="UnitOfMeasure" EntitySet="UnitOfMeasure" />
+      <End Role="ProductUoM" EntitySet="ProductUoM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_Role" Association="Self.FK_UserRole_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_User" Association="Self.FK_UserRole_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="408ebb22ac024e1d8974fede8fb80dde" Name="Diagram1">
+        <EntityTypeShape EntityType="ProductionModel.Activity" Width="1.5" PointX="1.5" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductionModel.Manufacturer" Width="1.5" PointX="1.5" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductionModel.Order" Width="1.5" PointX="1.5" PointY="33.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductionModel.OrderActivity" Width="1.5" PointX="0.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductionModel.Process" Width="1.5" PointX="1.5" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductionModel.Product" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductionModel.Role" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductionModel.Size" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductionModel.Store" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductionModel.UnitOfMeasure" Width="1.5" PointX="3.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductionModel.User" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductionModel.OrderInput" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductionModel.OrderOutput" Width="1.5" PointX="6" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductionModel.ProductSize" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductionModel.ProductStore" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductionModel.ProductUoM" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="ProductionModel.FK_Activity_Process" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionModel.FK_OrderActivity_Activity" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionModel.FK_OrderActivity_Manufacturer" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionModel.FK_OrderActivity_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionModel.FK_OrderInput_OrderActivity" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionModel.FK_OrderOutput_OrderActivity" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionModel.FK_OrderInput_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionModel.FK_OrderOutput_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionModel.FK_ProductSize_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionModel.FK_ProductStore_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionModel.FK_ProductUoM_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionModel.FK_OrderInput_Size" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionModel.FK_OrderOutput_Size" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionModel.FK_ProductSize_Size" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionModel.FK_ProductStore_Store" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionModel.FK_OrderInput_UnitOfMeasure" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionModel.FK_OrderInput_UnitOfMeasure1" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionModel.FK_OrderOutput_UnitOfMeasure" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionModel.FK_ProductUoM_UnitOfMeasure" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionModel.UserRole" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

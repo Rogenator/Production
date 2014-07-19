@@ -1,0 +1,12 @@
+C:\Programming\GuiñoGuiño\Production\Production.Cmd\bin\Debug\Production.Cmd.exe.config
+C:\Programming\GuiñoGuiño\Production\Production.Cmd\bin\Debug\Production.Cmd.exe
+C:\Programming\GuiñoGuiño\Production\Production.Cmd\bin\Debug\Production.Cmd.pdb
+C:\Programming\GuiñoGuiño\Production\Production.Cmd\obj\Debug\Production.Cmd.exe
+C:\Programming\GuiñoGuiño\Production\Production.Cmd\obj\Debug\Production.Cmd.pdb
+C:\Programming\GuiñoGuiño\Production\Production.Cmd\bin\Debug\Production.Business.dll
+C:\Programming\GuiñoGuiño\Production\Production.Cmd\bin\Debug\Production.Entity.dll
+C:\Programming\GuiñoGuiño\Production\Production.Cmd\bin\Debug\EntityFramework.dll
+C:\Programming\GuiñoGuiño\Production\Production.Cmd\bin\Debug\Production.Business.pdb
+C:\Programming\GuiñoGuiño\Production\Production.Cmd\bin\Debug\Production.Entity.pdb
+C:\Programming\GuiñoGuiño\Production\Production.Cmd\bin\Debug\EntityFramework.xml
+C:\Programming\GuiñoGuiño\Production\Production.Cmd\obj\Debug\Production.Cmd.csprojResolveAssemblyReference.cache
